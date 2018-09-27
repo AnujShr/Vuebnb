@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);body {
+body {
   font-family: 'Open Sans', sans-serif;
   color: #484848;
   font-size: 17px;
@@ -60,6 +60,95 @@ hr {
   border-top: 1px solid #dce0e0;
 }
 
+.about {
+  margin: 2em 0;
+}
+
+.about h3 {
+  font-size: 22px;
+}
+
+.about p {
+  white-space: pre-wrap;
+}
+
+.header {
+  height: 320px;
+}
+
+.header .header-img {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-color: #f5f5f5;
+  height: 100%;
+  cursor: pointer;
+  position: relative;
+}
+
+.list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  margin: 2em 0;
+}
+
+.list .title {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 25%;
+          flex: 1 1 25%;
+}
+
+.list .content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 75%;
+          flex: 1 1 75%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.list .list-item {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
+  margin-bottom: 16px;
+}
+
+.list .list-item > i {
+  width: 35px;
+}
+
+@media (max-width: 743px) {
+  .list .title {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 33%;
+            flex: 1 1 33%;
+  }
+
+  .list .content {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 67%;
+            flex: 1 1 67%;
+  }
+
+  .list .list-item {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+  }
+
+}
+
+.about p.contracted {
+  height: 250px;
+  overflow: hidden;
+}
+
 button {
   text-align: center;
   vertical-align: middle;
@@ -71,6 +160,102 @@ button {
   cursor: pointer;
   display: inline-block;
   margin-bottom: 0;
+}
+
+.about button.more {
+  background: transparent;
+  border: 0;
+  color: #008489;
+  padding: 0;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.about button.more:hover,
+.about button.more:focus,
+.about button.more:active {
+  text-decoration: underline;
+  outline: none;
+}
+
+.header .header-img button {
+  font-size: 14px;
+  padding: 7px 18px;
+  color: #484848;
+  line-height: 1.43;
+  background: #ffffff;
+  font-weight: bold;
+  border-radius: 4px;
+  border: 1px solid #c4c4c4;
+}
+
+.header .header-img button.view-photos {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+#modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background-color: rgba(0,0,0,0.85);
+}
+
+#modal.show {
+  display: block;
+}
+
+.modal-content {
+  height: 100%;
+  width: 100%;
+
+  max-width: 105vh;
+  padding-top: 12vh;
+  margin: 0 auto;
+  position: relative;
+}
+
+
+
+.modal-content img {
+  max-width: 100%;
+}
+
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+}
+
+
+.modal-close {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0 28px 8px;
+  font-size: 4em;
+  width: auto;
+  height: auto;
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: #ffffff;
+  z-index: 1000;
+  font-weight: 100;
+  line-height: 1;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 105vh;
+  padding-top: 12vh;
+  margin: 0 auto;
+  position: relative;
 }
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
@@ -2504,9 +2689,5 @@ button {
   /* IE9 Compat Modes */
   src: local("Open Sans Extrabold Italic"), local("OpenSans-ExtraboldItalic"), url(/fonts/vendor/open-sans-all/open-sans-800italic.eot?957287ebc80dcf9381c25b1c0d0ae51e?#iefix) format("embedded-opentype"), url(/fonts/vendor/open-sans-all/open-sans-800italic.woff2?7789cb285e0fdd866795f0fb8f19264f) format("woff2"), url(/fonts/vendor/open-sans-all/open-sans-800italic.woff?51c4ab203f9003ce49cc9e66b05c4968) format("woff"), url(/fonts/vendor/open-sans-all/open-sans-800italic.ttf?73d6bb0d4f596a91992e6be32e82e3bc) format("truetype"), url(/fonts/vendor/open-sans-all/open-sans-800italic.svg?6be75e80b3b60ec7e673921a73771514#OpenSans) format("svg");
   /* Legacy iOS */ }
-.navbar-laravel {
-  background-color: #fff;
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
+
 
