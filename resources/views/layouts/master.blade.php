@@ -10,7 +10,7 @@
 </head>
 <body>
 <div id="toolbar">
-    <img class="icon" src="logo.png">
+    <img class="icon" src="{{asset('images/logo.png')}}">
     <h1>vuebnb</h1>
 </div>
 <div id="app">
