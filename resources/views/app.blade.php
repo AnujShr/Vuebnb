@@ -40,8 +40,11 @@
         <div id="modal" v-bind:class="{ show : modalOpen }">
             <button v-on:click="modalOpen = false" class="modal-close">&times;</button>
             <div class="modal-content">
-                <img src="sample/header.jpg"/>
+                <img src="{{asset('images/header.jpg')}}"/>
             </div>
         </div>
     </div>
+    <script>
+        window.vuebnb_listing_model = "{!! addslashes(json_encode($model)) !!}";
+    </script>
 @endsection

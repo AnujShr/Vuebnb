@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -6,9 +5,11 @@
  */
 
 // require('./bootstrap');
+import 'core-js/fn/object/assign';
+import './helpers';
+import {populateAmenitiesAndPrices} from "./helpers";
 
 window.Vue = require('vue');
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -17,29 +18,26 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
+let model = JSON.parse(window.vuebnb_listing_model);
+model = populateAmenitiesAndPrices(model);
 const app = new Vue({
     el: '#app',
-    data: {
-        title: sample.title,
-        address: sample.address,
-        about: sample.about,
+    data: Object.assign(model, {
         headerImageStyle: {
-            'background-image': 'url(images/header.jpg)'
+            'background-image': `url(${model.images[0]})`
         },
-        amenities: sample.amenities,
-        prices: sample.prices,
         contracted: true,
         modalOpen: false
-    },
+    }),
     methods: {
-        escapeKeyListener: function(evt) {
+        escapeKeyListener(evt) {
             if (evt.keyCode === 27 && this.modalOpen) {
                 this.modalOpen = false;
             }
         }
     },
     watch: {
-        modalOpen: function() {
+        modalOpen: function () {
             var className = 'modal-open';
             if (this.modalOpen) {
                 document.body.classList.add(className);
@@ -48,7 +46,7 @@ const app = new Vue({
             }
         }
     },
-    created: function() {
+    created: function () {
         document.addEventListener('keyup', this.escapeKeyListener);
     },
     destroyed: function () {
