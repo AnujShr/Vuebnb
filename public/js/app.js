@@ -246,55 +246,66 @@ prices.set('price_weekly_discount', 'Weekly discount');
 prices.set('price_monthly_discount', 'Monthly discount');
 
 var populateAmenitiesAndPrices = function populateAmenitiesAndPrices(state) {
-  if (!state) return {};
-  var obj = {
-    id: state.id,
-    title: state.title,
-    address: state.address,
-    about: state.about,
-    amenities: [],
-    prices: [],
-    images: []
-  };
-  for (var key in state) {
-    var arr = key.split("_");
-    if (arr[0] === 'amenity' && state[key]) {
-      obj.amenities.push(key);
+    if (!state) return {};
+    var obj = {
+        id: state.id,
+        title: state.title,
+        address: state.address,
+        about: state.about,
+        amenities: [],
+        prices: [],
+        images: []
+    };
+    /*
+    * state is model array passed from
+    * ListingController
+    * */
+    for (var key in state) {
+        var arr = key.split("_");
+        /**
+         *arr[0] ='amenity'
+         * arr[1] ='wifi'
+         * Trying to check if first array index has
+         * amenity ,image,or price
+         * both comes for column of db or model variable
+         **/
+        if (arr[0] === 'amenity' && state[key]) {
+            obj.amenities.push(key);
+        }
+        if (arr[0] === 'price') {
+            obj.prices.push({ title: key, value: state[key] });
+        }
+        if (arr[0] === 'image') {
+            obj.images.push(state[key]);
+        }
     }
-    if (arr[0] === 'price') {
-      obj.prices.push({ title: key, value: state[key] });
-    }
-    if (arr[0] === 'image') {
-      obj.images.push(state[key]);
-    }
-  }
 
-  obj.amenities = obj.amenities.map(function (item) {
-    return amenities.get(item);
-  });
+    obj.amenities = obj.amenities.map(function (item) {
+        return amenities.get(item);
+    });
 
-  obj.prices = obj.prices.map(function (item) {
-    item.title = prices.get(item.title);
-    return item;
-  });
+    obj.prices = obj.prices.map(function (item) {
+        item.title = prices.get(item.title);
+        return item;
+    });
 
-  return obj;
+    return obj;
 };
 
 
 
 var groupByCountry = function groupByCountry(listings) {
-  if (!listings) return {};
-  return listings.reduce(function (rv, x) {
-    var key = ['Taiwan', 'Poland', 'Cuba'].find(function (country) {
-      return x.address.indexOf(country) > -1;
-    });
-    if (!rv[key]) {
-      rv[key] = [];
-    }
-    rv[key].push(x);
-    return rv;
-  }, {});
+    if (!listings) return {};
+    return listings.reduce(function (rv, x) {
+        var key = ['Taiwan', 'Poland', 'Cuba'].find(function (country) {
+            return x.address.indexOf(country) > -1;
+        });
+        if (!rv[key]) {
+            rv[key] = [];
+        }
+        rv[key].push(x);
+        return rv;
+    }, {});
 };
 
 
