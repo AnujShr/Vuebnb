@@ -14,7 +14,7 @@
                 <h3>About this listing</h3>
                 <p v-bind:class="{ contracted: contracted }">@{{ about }}</p>
                 <button v-if="contracted" class="more" v-on:click="contracted = false">+ More</button>
-                <button v-else="contracted==false" class="more" v-on:click="contracted = true">+ More</button>
+                <button v-else="contracted==false" class="more" v-on:click="contracted = true">Hide -</button>
             </div>
             <div class="amenities list">
                 <div class="title"><strong>Amenities</strong></div>
