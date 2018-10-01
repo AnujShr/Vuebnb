@@ -11,8 +11,7 @@
 |
 */
 
-Route::get('/', function() {
-    return view('app');
-});
-Route::get('/listing/{listing}','ListingController@index');
+
+Route::get('/', 'ListingController@index');
+Route::get('/listing/{listing}', 'ListingController@index');
 

@@ -7,7 +7,7 @@
 // require('./bootstrap');
 import 'core-js/fn/object/assign';
 import './helpers';
-import {populateAmenitiesAndPrices} from "./helpers";
+
 
 window.Vue = require('vue');
 /**
@@ -16,21 +16,10 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
-Vue.component('image-carousel', require('./components/ImageCarouselComponent.vue'));
-Vue.component('modal-window', require('./components/ModalComponent.vue'));
-Vue.component('header-image', require('./components/Listing/HeaderImageComponent'));
-Vue.component('feature-list', require('./components/Listing/FeatureListComponent'));
-let model = JSON.parse(window.vuebnb_listing_model);
-model = populateAmenitiesAndPrices(model);
+import ListingPage from './components/ListingComponent.vue'
+
 const app = new Vue({
     el: '#app',
-    data: Object.assign(model, {
-        contracted: true,
-    }),
-    methods: {
-        openModal() {
-            this.$refs.imagemodal.modalOpen = true;
-        }
-    }
+    render: h => h(ListingPage)
+
 });

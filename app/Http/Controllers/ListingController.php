@@ -9,7 +9,12 @@ class ListingController extends Controller
 {
     public function index(Listing $listing)
     {
+
         $model = $listing->toArray();
+        if(empty($model)){
+            $listing = Listing::query()->where('id','10')->first();
+            $model = $listing->toArray();
+        }
         $model = $this->add_image_urls($listing, $model);
         return view('app', compact('model'));
     }

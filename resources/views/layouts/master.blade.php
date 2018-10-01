@@ -13,8 +13,9 @@
     <img class="icon" src="{{asset('images/logo.png')}}">
     <h1>vuebnb</h1>
 </div>
-<div id="app">
-    @yield('content')
-    <script src="{{asset('js/app.js')}}"></script>
+@yield('content')
+@yield('script')
+<script src="{{asset('js/app.js')}}"></script>
+
 </body>
 </html>

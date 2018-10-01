@@ -1,5 +1,7 @@
 <template>
-    <i :class="classes" @click="clicked"></i>
+    <div>
+        <i :class="classes" @click="clicked"></i>
+    </div>
 </template>
 
 <script>
