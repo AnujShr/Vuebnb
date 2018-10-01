@@ -13,5 +13,5 @@
 
 
 Route::get('/', 'ListingController@index');
-Route::get('/listing/{listing}', 'ListingController@index');
+Route::get('/listing/{listing}', 'ListingController@get_listing_web');
 
