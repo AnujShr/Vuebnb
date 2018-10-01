@@ -15,7 +15,7 @@
     import ListingSummary from './ListingSummary.vue'
 
     let serverData = JSON.parse(window.vuebnb_server_date);
-    let listing_groups = groupByCountry(serverData.listing);
+
 
     export default {
         mixins: [routeMixins],
@@ -26,7 +26,9 @@
         }, components: {
             ListingSummary
         }, methods: {
+
             assignData({listing}) {
+
                 this.listing_groups = groupByCountry(listing)
             }
         },
