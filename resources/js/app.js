@@ -18,40 +18,19 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('image-carousel', require('./components/ImageCarouselComponent.vue'));
-Vue.component('carousel-control', require('./components/CarouselControlComponent.vue'));
-
+Vue.component('modal-window', require('./components/ModalComponent.vue'));
+Vue.component('header-image', require('./components/Listing/HeaderImageComponent'));
+Vue.component('feature-list', require('./components/Listing/FeatureListComponent'));
 let model = JSON.parse(window.vuebnb_listing_model);
 model = populateAmenitiesAndPrices(model);
 const app = new Vue({
     el: '#app',
     data: Object.assign(model, {
-        headerImageStyle: {
-            'background-image': `url(${model.images[0]})`
-        },
         contracted: true,
-        modalOpen: false
     }),
     methods: {
-        escapeKeyListener(evt) {
-            if (evt.keyCode === 27 && this.modalOpen) {
-                this.modalOpen = false;
-            }
+        openModal() {
+            this.$refs.imagemodal.modalOpen = true;
         }
-    },
-    watch: {
-        modalOpen: function () {
-            var className = 'modal-open';
-            if (this.modalOpen) {
-                document.body.classList.add(className);
-            } else {
-                document.body.classList.remove(className);
-            }
-        }
-    },
-    created: function () {
-        document.addEventListener('keyup', this.escapeKeyListener);
-    },
-    destroyed: function () {
-        document.removeEventListener('keyup', this.escapeKeyListener);
     }
 });

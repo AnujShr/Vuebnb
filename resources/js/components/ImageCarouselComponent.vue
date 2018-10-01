@@ -8,6 +8,8 @@
     </div>
 </template>
 <script>
+    import CarouselControl from '../components/CarouselControlComponent.vue';
+
     export default {
         props: ['images'],
         data() {
@@ -33,6 +35,9 @@
                     this.index = newVal;
                 }
             }
+        },
+        components:{
+            CarouselControl
         }
     }
 </script>
